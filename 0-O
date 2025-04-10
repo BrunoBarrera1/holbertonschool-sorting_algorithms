@@ -1,0 +1,4 @@
+O(n)   # Best case (already sorted)
+O(n²)  # Average case (random order)
+O(n²)  # Worst case (completely reversed order)
+
