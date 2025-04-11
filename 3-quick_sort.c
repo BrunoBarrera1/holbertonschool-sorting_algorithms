@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
- * swap - Intercambia dos números enteros en un array.
+ * swap - Intercambia dos números en un array.
  * @a: Primer número.
  * @b: Segundo número.
  */
@@ -27,8 +27,8 @@ static int partition(int *array, int low, int high, size_t size)
 	int i = low - 1;
 	int j;
 
-	for (j = low; j < high; j++)
-	{
+		for (j = low; j < high; j++)
+		{
 			if (array[j] < pivot_val)
 			{
 				i++;
@@ -39,12 +39,14 @@ static int partition(int *array, int low, int high, size_t size)
 			}
 		}
 	}
+
 	i++;
 	if (i != high)
 	{
 		swap(&array[i], &array[high]);
 		print_array(array, size);
 	}
+
 	return (i);
 }
 
@@ -67,7 +69,7 @@ static void quicksort_helper(int *array, int low, int high, size_t size)
 }
 
 /**
- * quick_sort - Ordena un array utilizando el algoritmo Quick Sort.
+ * quick_sort - Ordena un array usando el algoritmo Quick Sort.
  * @array: Array a ordenar.
  * @size: Tamaño del array.
  */
@@ -75,6 +77,7 @@ void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
+
 	quicksort_helper(array, 0, size - 1, size);
 }
 
