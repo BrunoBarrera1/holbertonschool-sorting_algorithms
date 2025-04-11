@@ -2,9 +2,9 @@
 #include <stddef.h>
 
 /**
- * swap - Intercambia dos enteros en un array.
- * @a: Primer entero.
- * @b: Segundo entero.
+ * swap - Intercambia dos números enteros en un array.
+ * @a: Primer número.
+ * @b: Segundo número.
  */
 static void swap(int *a, int *b)
 {
@@ -15,7 +15,7 @@ static void swap(int *a, int *b)
 
 /**
  * partition - Implementa el esquema de partición de Lomuto.
- * @array: Array a particionar.
+ * @array: Array a ordenar.
  * @low: Índice inicial.
  * @high: Índice final.
  * @size: Tamaño del array.
@@ -29,10 +29,10 @@ static int partition(int *array, int low, int high, size_t size)
 
 	for (j = low; j < high; j++)
 	{
-		if (array[j] < pivot_val)
-		{
-			i++;
-			if (i != j)
+			if (array[j] < pivot_val)
+			{
+				i++;
+				if (i != j)
 			{
 				swap(&array[i], &array[j]);
 				print_array(array, size);
@@ -49,7 +49,7 @@ static int partition(int *array, int low, int high, size_t size)
 }
 
 /**
- * quicksort_helper - Función auxiliar recursiva para quick_sort.
+ * quicksort_helper - Función auxiliar recursiva para Quick Sort.
  * @array: Array a ordenar.
  * @low: Índice inicial.
  * @high: Índice final.
@@ -67,7 +67,7 @@ static void quicksort_helper(int *array, int low, int high, size_t size)
 }
 
 /**
- * quick_sort - Ordena un array usando el algoritmo Quick Sort.
+ * quick_sort - Ordena un array utilizando el algoritmo Quick Sort.
  * @array: Array a ordenar.
  * @size: Tamaño del array.
  */
@@ -77,3 +77,4 @@ void quick_sort(int *array, size_t size)
 		return;
 	quicksort_helper(array, 0, size - 1, size);
 }
+
