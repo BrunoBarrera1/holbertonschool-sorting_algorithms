@@ -2,15 +2,23 @@
 #include <stddef.h>
 
 /**
- * swap - Intercambia dos números en un array.
+ * swap - Intercambia dos números en un array si son diferentes.
  * @a: Primer número.
  * @b: Segundo número.
+ * Return: 1 si hubo intercambio, 0 si los valores son iguales.
  */
-static void swap(int *a, int *b)
+static int swap(int *a, int *b)
 {
-	int tmp = *a;
+	int tmp;
+
+	if (*a == *b)
+		return (0);
+
+	tmp = *a;
 	*a = *b;
 	*b = tmp;
+
+	return (1);
 }
 
 /**
@@ -23,29 +31,24 @@ static void swap(int *a, int *b)
  */
 static int partition(int *array, int low, int high, size_t size)
 {
-	int pivot_val = array[high];
-	int i = low - 1;
-	int j;
+	int pivot_val, i, j;
 
-		for (j = low; j < high; j++)
+	pivot_val = array[high];
+	i = low - 1;
+
+	for (j = low; j < high; j++)
+	{
+		if (array[j] < pivot_val)
 		{
-			if (array[j] < pivot_val)
-			{
-				i++;
-				if (i != j)
-			{
-				swap(&array[i], &array[j]);
+			i++;
+			if (swap(&array[i], &array[j]))
 				print_array(array, size);
-			}
 		}
 	}
 
 	i++;
-	if (i != high)
-	{
-		swap(&array[i], &array[high]);
+	if (swap(&array[i], &array[high]))
 		print_array(array, size);
-	}
 
 	return (i);
 }
@@ -61,7 +64,9 @@ static void quicksort_helper(int *array, int low, int high, size_t size)
 {
 	if (low < high)
 	{
-		int pi = partition(array, low, high, size);
+		int pi;
+
+		pi = partition(array, low, high, size);
 
 		quicksort_helper(array, low, pi - 1, size);
 		quicksort_helper(array, pi + 1, high, size);
@@ -80,4 +85,3 @@ void quick_sort(int *array, size_t size)
 
 	quicksort_helper(array, 0, size - 1, size);
 }
-
